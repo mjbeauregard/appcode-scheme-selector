@@ -1,0 +1,49 @@
+<idea-plugin version="2">
+  <id>com.insightfulminds.appcode.XcodeSchemeSelector</id>
+  <name>Xcode Scheme Selector</name>
+  <version>1.0</version>
+  <vendor email="michael@insightfulminds.com" url="http://www.insightfulminds.com">Insightful Minds Inc.</vendor>
+
+  <description><![CDATA[
+        <p>
+        XcodeSchemeSelector provides an improved user interface for target and device selection in AppCode. It is better than the built-in
+        interface because:
+        <ul>
+            <li>it allows you to choose the target and device independently - in this way it behaves more like Xcode
+            <li>removes clutter by filtering out non-executable targets (such as Pods)
+        </ul>
+    ]]></description>
+
+  <change-notes><![CDATA[
+        <dl>
+            <dt><b>June 17, 2015 (Release 1.0)</b></dt>
+            <dd>
+            Initial release
+            </dd>
+        </dl>
+    ]]>
+  </change-notes>
+
+  <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="127"/>
+
+  <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.appcode</depends>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction"
+            class="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction" text="Select Target"
+            description="Select Executable Target">
+      <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="RunConfiguration"/>
+    </action>
+    <action id="com.insightfulminds.appcode.schemeselector.DeviceComboBoxAction"
+            class="com.insightfulminds.appcode.schemeselector.DeviceComboBoxAction" text="Select Device"
+            description="Select Device">
+      <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction"/>
+    </action>
+  </actions>
+
+</idea-plugin>
