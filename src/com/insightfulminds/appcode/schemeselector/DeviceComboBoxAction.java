@@ -16,6 +16,8 @@ public class DeviceComboBoxAction extends ComboBoxAction implements DumbAware {
     public static final Icon CHECKED_SELECTED_ICON;
     public static final Icon EMPTY_ICON;
 
+    private ComboBoxButton comboBoxButton;
+
     static {
         CHECKED_ICON = new SizedIcon(AllIcons.Actions.Checked, 16, 16);
         CHECKED_SELECTED_ICON = new SizedIcon(AllIcons.Actions.Checked_selected, 16, 16);
@@ -53,10 +55,14 @@ public class DeviceComboBoxAction extends ComboBoxAction implements DumbAware {
         }
     }
 
+    public void showPopup() {
+        this.comboBoxButton.showPopup();
+    }
+
     public JComponent createCustomComponent(Presentation presentation) {
-        ComboBoxButton button = new ComboBoxButton(presentation);
-        button.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 2));
-        return button;
+        this.comboBoxButton = new ComboBoxButton(presentation);
+        comboBoxButton.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 2));
+        return comboBoxButton;
     }
 
     private class SelectDeviceAction extends AnAction {

@@ -11,6 +11,8 @@ import java.util.List;
 
 public class TargetComboBoxAction extends ComboBoxAction implements DumbAware {
 
+    private ComboBoxButton comboBoxButton;
+
     @NotNull
     @Override
     protected DefaultActionGroup createPopupActionGroup(JComponent jComponent) {
@@ -52,10 +54,14 @@ public class TargetComboBoxAction extends ComboBoxAction implements DumbAware {
         }
     }
 
+    public void showPopup() {
+        this.comboBoxButton.showPopup();
+    }
+
     public JComponent createCustomComponent(Presentation presentation) {
-        ComboBoxButton button = new ComboBoxButton(presentation);
-        button.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 2));
-        return button;
+        this.comboBoxButton = new ComboBoxButton(presentation);
+        comboBoxButton.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 2));
+        return comboBoxButton;
     }
 
     private class SelectTargetAction extends AnAction {

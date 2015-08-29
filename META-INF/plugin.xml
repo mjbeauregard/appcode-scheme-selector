@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.insightfulminds.appcode.XcodeSchemeSelector</id>
   <name>Xcode Scheme Selector</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="michael@insightfulminds.com" url="http://www.insightfulminds.com">Insightful Minds Inc.</vendor>
 
   <description><![CDATA[
@@ -20,6 +20,12 @@
             <dd>
             Initial release
             </dd>
+            <dt><b>Sept 4, 2015 (Release 1.1)</b></dt>
+            <dd>
+            Added "Select Target..." and "Select Device..." actions to allow key bindings to popup
+            each selector instead of having to use the mouse. Thanks to Brandon Evans for suggesting
+            and testing this feature.
+            </dd>
         </dl>
     ]]>
   </change-notes>
@@ -35,15 +41,23 @@
   <actions>
     <!-- Add your actions here -->
     <action id="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction"
-            class="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction" text="Select Target"
+            class="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction" text="Target Selector"
             description="Select Executable Target">
       <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="RunConfiguration"/>
     </action>
     <action id="com.insightfulminds.appcode.schemeselector.DeviceComboBoxAction"
-            class="com.insightfulminds.appcode.schemeselector.DeviceComboBoxAction" text="Select Device"
+            class="com.insightfulminds.appcode.schemeselector.DeviceComboBoxAction" text="Device Selector"
             description="Select Device">
       <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="com.insightfulminds.appcode.schemeselector.TargetComboBoxAction"/>
     </action>
+    <action id="com.insightfulminds.appcode.schemeselector.TargetComboBoxPopupAction"
+            class="com.insightfulminds.appcode.schemeselector.TargetComboBoxPopupAction"
+            text="Select Target..."
+            description="Display the target selector popup"/>
+    <action id="com.insightfulminds.appcode.schemeselector.DeviceComboBoxPopupAction"
+            class="com.insightfulminds.appcode.schemeselector.DeviceComboBoxPopupAction"
+            text="Select Device..."
+            description="Display the device selector popup"/>
   </actions>
 
 </idea-plugin>
