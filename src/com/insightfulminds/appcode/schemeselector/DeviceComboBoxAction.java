@@ -42,17 +42,22 @@ public class DeviceComboBoxAction extends ComboBoxAction implements DumbAware {
     public void update(AnActionEvent event) {
         AppCode appCode = new AppCode(event);
         Presentation presentation = event.getPresentation();
+        if (presentation == null) {
+            return;
+        }
 
         if (appCode.isProjectReady()) {
             Device activeDevice = appCode.getActiveDevice();
 
-            presentation.setEnabled(true);
-            presentation.setText(activeDevice.getDisplayName(), false);
+            if (activeDevice != null) {
+                presentation.setEnabled(true);
+                presentation.setText(activeDevice.getDisplayName(), false);
+                return;
+            }
         }
-        else {
-            presentation.setEnabled(false);
-            presentation.setText(" ", false);
-        }
+
+        presentation.setEnabled(false);
+        presentation.setText(" ", false);
     }
 
     public void showPopup() {

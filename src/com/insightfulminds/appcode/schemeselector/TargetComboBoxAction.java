@@ -39,19 +39,24 @@ public class TargetComboBoxAction extends ComboBoxAction implements DumbAware {
     public void update(AnActionEvent event) {
         AppCode appCode = new AppCode(event);
         Presentation presentation = event.getPresentation();
+        if (presentation == null) {
+            return;
+        }
 
         if (appCode.isProjectReady()) {
             Target activeTarget = appCode.getActiveTarget();
 
-            presentation.setEnabled(true);
-            presentation.setText(activeTarget.getDisplayName(), false);
-            presentation.setIcon(activeTarget.getIcon());
+            if (activeTarget != null) {
+                presentation.setEnabled(true);
+                presentation.setText(activeTarget.getDisplayName(), false);
+                presentation.setIcon(activeTarget.getIcon());
+                return;
+            }
         }
-        else {
-            presentation.setEnabled(false);
-            presentation.setText(" ", false);
-            presentation.setIcon(null);
-        }
+
+        presentation.setEnabled(false);
+        presentation.setText(" ", false);
+        presentation.setIcon(null);
     }
 
     public void showPopup() {

@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.insightfulminds.appcode.XcodeSchemeSelector</id>
   <name>Xcode Scheme Selector</name>
-  <version>1.1</version>
+  <version>1.1.1</version>
   <vendor email="michael@insightfulminds.com" url="http://www.insightfulminds.com">Insightful Minds Inc.</vendor>
 
   <description><![CDATA[
@@ -16,15 +16,20 @@
 
   <change-notes><![CDATA[
         <dl>
-            <dt><b>June 17, 2015 (Release 1.0)</b></dt>
+            <dt><b>June 17, 2015 (Release 1.0.0)</b></dt>
             <dd>
             Initial release
             </dd>
-            <dt><b>Sept 4, 2015 (Release 1.1)</b></dt>
+            <dt><b>Sept 4, 2015 (Release 1.1.0)</b></dt>
             <dd>
             Added "Select Target..." and "Select Device..." actions to allow key bindings to popup
             each selector instead of having to use the mouse. Thanks to Brandon Evans for suggesting
             and testing this feature.
+            </dd>
+            <dt><b>Oct 29, 2016 (Release 1.1.1)</b></dt>
+            <dd>
+            Fixed NullPointerException that happens sometimes while opening a project. Thanks to Paul
+            Thorsteinson and Mark Anders for independently reporting this issue.
             </dd>
         </dl>
     ]]>
