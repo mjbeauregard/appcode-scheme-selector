@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.insightfulminds.appcode.XcodeSchemeSelector</id>
   <name>Xcode Scheme Selector</name>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <vendor email="michael@insightfulminds.com" url="http://www.insightfulminds.com">Insightful Minds Inc.</vendor>
 
   <description><![CDATA[
@@ -31,12 +31,16 @@
             Fixed NullPointerException that happens sometimes while opening a project. Thanks to Paul
             Thorsteinson and Mark Anders for independently reporting this issue.
             </dd>
+            <dt><b>Sep 16, 2018 (Release 1.1.2)</b></dt>
+            <dd>
+            Fixed compatibility issue with AppCode 2018.3 EAP. Thanks to Mark Anders for reporting the issue.
+            </dd>
         </dl>
     ]]>
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="127"/>
+  <idea-version since-build="183"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->
