@@ -2,6 +2,7 @@ package com.insightfulminds.appcode.schemeselector;
 
 import com.intellij.execution.*;
 import com.intellij.execution.configurations.ConfigurationType;
+import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -75,28 +76,11 @@ public class AppCode {
             return targets;
         }
 
-        for (ConfigurationType configType : runManager.getConfigurationFactories()) {
-
-            Map<String, List<RunnerAndConfigurationSettings>> configStructure = runManager.getStructure(configType);
-            for (List<RunnerAndConfigurationSettings> settingsList : configStructure.values()) {
-                for (RunnerAndConfigurationSettings settings : settingsList) {
-                    try {
-                        // Trick the settings into leaking some private info to help determine what kind of
-                        // target this is
-                        Element root = new Element("Config");
-                        settings.getConfiguration().writeExternal(root);
-
-                        // If the settings contains either of these two attributes, show it in the list
-                        Attribute runTargetProjectName = root.getAttribute("RUN_TARGET_PROJECT_NAME");
-                        Attribute testMode = root.getAttribute("TEST_MODE");
-
-                        if (runTargetProjectName != null || testMode != null) {
-                            targets.add(new Target(this, settings, getConfigurationIcon(settings)));
-                        }
-                    } catch (WriteExternalException e) {
-                        LOG.error(e);
-                    }
-                }
+        for (RunnerAndConfigurationSettings settings : runManager.getAllSettings()) {
+            try {
+                targets.add(new Target(this, settings, getConfigurationIcon(settings)));
+            } catch (WriteExternalException e) {
+                LOG.error(e);
             }
         }
 
