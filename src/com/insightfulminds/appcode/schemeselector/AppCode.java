@@ -128,7 +128,7 @@ public class AppCode {
 
         if (settings != null) {
             ExecutionTarget activeTarget = ExecutionTargetManager.getActiveTarget(project);
-            List<ExecutionTarget> targets = ExecutionTargetManager.getTargetsToChooseFor(project, settings);
+            List<ExecutionTarget> targets = ExecutionTargetManager.getTargetsToChooseFor(project, settings.getConfiguration());
 
             for (ExecutionTarget executionTarget : targets) {
                 devices.add(new Device(this, executionTarget, settings, executionTarget.equals(activeTarget)));
