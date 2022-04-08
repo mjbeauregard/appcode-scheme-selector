@@ -30,8 +30,6 @@ public class Device {
         String text = "Select Device";
         if(executionTarget != DefaultExecutionTarget.INSTANCE) {
             text = executionTarget.getDisplayName();
-        } else if(!settings.canRunOn(executionTarget)) {
-            text = "Nothing to run on";
         }
         return text;
     }
