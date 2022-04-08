@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jetbrains.intellij' version '1.5.2'
+    id 'java'
+}
+
+group 'com.insightfulminds'
+version '1.2.0'
+
+runIde {
+    jvmArgs '-Xmx4G'
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+//    version = '2021.3.3'
+    localPath = '/Applications/AppCode.app/Contents'
+}
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
