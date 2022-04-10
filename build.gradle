@@ -20,14 +20,18 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-//    version = '2021.3.3'
-    localPath = '/Applications/AppCode.app/Contents'
+    // Without this the patchPluginXml will set an explicit until-build
+    // in the plugin.xml which is not desired (want to leave it open)
+    updateSinceUntilBuild = false
+
+    // Set to the latest generic version since the OC- version prefix (for appcode)
+    // is not allowed for some reason
+    version = '2021.3'
+
+    // Use this instead of `version` above when testing the plugin locally
+    // localPath = '/Applications/AppCode 2022.1 EAP.app/Contents'
 }
-patchPluginXml {
-    changeNotes = """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
-}
+
 test {
     useJUnitPlatform()
 }
